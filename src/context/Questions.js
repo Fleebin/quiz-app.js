@@ -18,7 +18,7 @@ export const QuestionsProvider = ({ children }) => {
 
 export const useQuestions = () => {
     const context = useContext(QuestionsContext);
-    if (!context) throw new Error("useCount must be used within a CountProvider");
+    if (!context) throw new Error("useContext must be used within a QuestionsProvider");
     const { quest, setQuest } = context;
     return { quest, setQuest }
 }
