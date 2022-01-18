@@ -1,9 +1,12 @@
 import React from 'react';
+import { QuestionsProvider } from './context/Questions';
 import { Routes } from './routes'
 export const App = () => {
   return (
-    <div className="App">
-      <Routes />
-    </div>
+    <>
+      <QuestionsProvider>
+        <Routes />
+      </QuestionsProvider>
+    </>
   );
 }
