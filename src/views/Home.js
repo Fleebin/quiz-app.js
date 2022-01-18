@@ -5,20 +5,20 @@ import { useFormik } from 'formik';
 
 
 export const Home = () => {
-    const navigation = useNavigate()
+    const link = useNavigate()
     const formik = useFormik({
         initialValues: {
-            qtd: localStorage?.getItem('qtd')
+            qtd: localStorage?.getItem('qtdQuests')
         },
         onSubmit: values => {
-            localStorage.setItem('qtd', values.qtdQuestions);
-            navigation('/amount')
+            localStorage.setItem('qtdQuests', values.qtd);
+            link('/amount')
         },
     });
     return (
         <div className="home">
             <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="qtd">Please, select how many quests you want to answer.</label>
+                <label htmlFor="qtd">Selecione quantas perguntas você deseja responder</label>
                 <Input
                     id="qtd"
                     name="qtd"
@@ -26,7 +26,7 @@ export const Home = () => {
                     onChange={formik.handleChange}
                     value={formik.values.qtd}
                 />
-                <Button type="submit" variant="contained">Next</Button>
+                <Button type="submit" variant="contained">Proximo</Button>
             </form>
         </div>
     );
