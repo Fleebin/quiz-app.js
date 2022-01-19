@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Input, Container } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { useStyles } from './style.js'
-
+import './style.css'
 
 export const Home = () => {
 

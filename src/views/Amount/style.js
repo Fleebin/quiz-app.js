@@ -33,7 +33,7 @@ export const useStyles = makeStyles({
     btnSecondary: {
         textTransform: 'none',
         marginTop: '21px',
-        marginRight: '11px',
+        marginRight: '15px',
         padding: '6px 14px',
         borderRadius: '7px',
         background: ' #fff',

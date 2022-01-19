@@ -16,8 +16,9 @@ export const useStyles = makeStyles({
         display: 'block',
         fontSize: '30px',
         animation: '1ms ease 0s 1 normal none running native- autofill -in',
-        color: 'rgb(4, 69, 175)'
+        color: 'rgb(4, 69, 175)',
     },
+
     btnPrimary: {
         textTransform: 'none',
         backgroundColor: 'rgba(0, 118, 255, 0.9)',

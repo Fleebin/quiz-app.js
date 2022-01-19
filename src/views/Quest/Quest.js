@@ -2,18 +2,23 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuestions } from '../../context/Questions';
 import { getAnswers } from '../../utils/answers';
-import { Button } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
+import { useStyles } from './style';
+
 export const Quest = () => {
 
     const navigation = useNavigate();
     const { quest, setQuest } = useQuestions();
+    const classes = useStyles();
 
     const [currentQuest, setcurrentQuest] = React.useState(0);
     const [answerChoose, setAnswerChoose] = React.useState(null);
+
     const [answers, setAnswers] = React.useState([]);
     const [submittedAnswer, setSubmittedAnswer] = React.useState(false);
     const [labelButton, setLabelButton] = React.useState('Confirmar');
     const [newQuestAva, setNewQuestAva] = React.useState(false);
+
 
     useEffect(() => {
         if (!quest[0]) {
@@ -21,6 +26,16 @@ export const Quest = () => {
         }
         setAnswers(getAnswers(quest[currentQuest]));
     }, [currentQuest]);
+
+    useEffect(() => {
+        if (!quest[0]) {
+            return;
+        }
+        localStorage.setItem('qtdCorrectlyAnswers', 0);
+        localStorage.setItem('qtdIncorrectlyAnswers', 0);
+        setAnswers(getAnswers(quest[currentQuest]));
+    }, []);
+
 
     const checkAnswer = () => {
 
@@ -60,25 +75,15 @@ export const Quest = () => {
     };
 
     return (
-        <>
-            <div>
-                <p>
-                    {`${currentQuest + 1}/${localStorage.getItem(
-                        'qtdQuests',
-                    )}`}
-                </p>
-            </div>
+        <Container className={classes.body}>
             <div>
                 {/* Perguntas! */}
                 <div>
-                    <p>
-                        {quest[currentQuest]?.category}
+                    <p className={classes.h1}>
+                        {`${currentQuest + 1}`} - {quest[currentQuest]?.question.replace(/&quot;/g, '"',)}
                     </p>
-                    <p>
-                        {quest[currentQuest]?.question.replace(
-                            /&quot;/g,
-                            '"',
-                        )}
+                    <p className={classes.h2}>
+                        {quest[currentQuest]?.category}
                     </p>
                 </div>
                 {/* Respostas! */}
@@ -94,7 +99,7 @@ export const Quest = () => {
                                         setAnswerChoose(index);
                                     }}
                                 >
-                                    <p>
+                                    <p className={classes.answers}>
                                         {`${index + 1}) ${item}`}
                                     </p>
                                 </div>
@@ -102,8 +107,7 @@ export const Quest = () => {
                                     {submittedAnswer &&
                                         quest[currentQuest].correct_answer ===
                                         item && (
-                                            <div>
-                                            </div>
+                                            <p>ALOU</p>
                                         )}
                                     {submittedAnswer &&
                                         quest[currentQuest].correct_answer !==
@@ -116,12 +120,15 @@ export const Quest = () => {
                     })}
                 </div>
                 <Button
+                    className={classes.btnPrimary}
                     type="submit"
                     variant="contained"
-                    onClick={() => { checkAnswer(); }}
+                    onClick={() => {
+                        checkAnswer();
+                    }}
                 >
                     Confirmar</Button>
             </div>
-        </>
+        </Container>
     );
 };
