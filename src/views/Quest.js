@@ -2,16 +2,18 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuestions } from '../context/Questions';
 import { getAnswers } from '../utils/answers';
-
+import { Button } from '@material-ui/core';
 export const Quest = () => {
 
     const navigation = useNavigate();
     const { quest, setQuest } = useQuestions();
 
     const [currentQuest, setcurrentQuest] = React.useState(0);
-    const [indexAnswerChoose, setIndexAnswerChoose] = React.useState(null);
+    const [answerChoose, setAnswerChoose] = React.useState(null);
     const [answers, setAnswers] = React.useState([]);
     const [submittedAnswer, setSubmittedAnswer] = React.useState(false);
+    const [labelButton, setLabelButton] = React.useState('Confirmar');
+    const [newQuestAva, setNewQuestAva] = React.useState(false);
 
     useEffect(() => {
         if (!quest[0]) {
@@ -19,6 +21,43 @@ export const Quest = () => {
         }
         setAnswers(getAnswers(quest[currentQuest]));
     }, [currentQuest]);
+
+    const checkAnswer = () => {
+
+        if (newQuestAva) {
+            if (!quest[currentQuest + 1]) {
+                navigation('/result');
+            }
+            setSubmittedAnswer(false);
+            setAnswers([]);
+            setAnswerChoose(null);
+            setLabelButton('Confirm');
+            setNewQuestAva(false);
+            setcurrentQuest((oldState) => oldState + 1);
+            return;
+        }
+
+        setSubmittedAnswer(true);
+        setNewQuestAva(true);
+
+        const optionSelected = answers[answerChoose];
+
+        if (
+            quest[currentQuest].correct_answer === optionSelected
+        ) {
+            localStorage.setItem(
+                'qtdCorrectlyAnswers',
+                Number(localStorage?.getItem('qtdCorrectlyAnswers')) + 1,
+            );
+        } else {
+            localStorage.setItem(
+                'qtdIncorrectlyAnswers',
+                Number(localStorage?.getItem('qtdCorrectlyAnswers')) + 1,
+            );
+        }
+
+        setLabelButton('Next');
+    };
 
     return (
         <>
@@ -30,6 +69,7 @@ export const Quest = () => {
                 </p>
             </div>
             <div>
+                {/* Perguntas! */}
                 <div>
                     <p>
                         {quest[currentQuest]?.category}
@@ -41,6 +81,7 @@ export const Quest = () => {
                         )}
                     </p>
                 </div>
+                {/* Respostas! */}
                 <div>
                     {answers.map((item, index) => {
                         return (
@@ -50,7 +91,7 @@ export const Quest = () => {
                                         if (submittedAnswer) {
                                             return;
                                         }
-                                        setIndexAnswerChoose(index);
+                                        setAnswerChoose(index);
                                     }}
                                 >
                                     <p>
@@ -74,6 +115,12 @@ export const Quest = () => {
                         );
                     })}
                 </div>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={() => { checkAnswer(); }}
+                >
+                    Confirmar</Button>
             </div>
         </>
     );
