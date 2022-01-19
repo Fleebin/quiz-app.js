@@ -1,15 +1,44 @@
-import * as React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
 
 export const useStyles = makeStyles({
-    primary: {
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        border: 0,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
+    body: {
+        texAlign: 'center',
+        marginTop: '150px',
+
     },
+    flex: {
+        display: 'flex',
+    },
+    h1: {
+        fontSize: '33px',
+        display: 'block',
+        marginBottom: '33px'
+    },
+    h2: {
+        fontSize: '21px',
+        display: 'block',
+        marginBottom: '33px'
+    },
+    btnPrimary: {
+        textTransform: 'none',
+        backgroundColor: 'rgba(0, 118, 255, 0.9)',
+        color: 'rgb(255, 255, 255)',
+        boxShadow: '0 6px 20px rgba(0, 118, 255, 0.23)',
+        borderRadius: '4px',
+        border: '1px solid transparent',
+        padding: '6px 14px',
+        marginTop: '21px',
+        width: '200px'
+    },
+    btnSecondary: {
+        textTransform: 'none',
+        marginTop: '21px',
+        marginRight: '11px',
+        padding: '6px 14px',
+        borderRadius: '7px',
+        background: ' #fff',
+        color: '#696969',
+        boxShadow: '0 4px 14px 0 rgba(0, 0, 0, 0.1)',
+        width: '200px'
+    }
 });

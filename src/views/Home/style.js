@@ -4,11 +4,11 @@ export const useStyles = makeStyles({
     form: {
         texAlign: 'left',
         marginTop: '150px',
-        fontFamily: '-apple-system'
     },
     label: {
         fontSize: '33px',
-        display: 'block'
+        display: 'block',
+        marginBottom: '33px'
     },
     input: {
         borderBottom: '1px solid',
@@ -19,9 +19,10 @@ export const useStyles = makeStyles({
         color: 'rgb(4, 69, 175)'
     },
     btnPrimary: {
-        backgroundColor: 'rgb(4, 69, 175)',
+        textTransform: 'none',
+        backgroundColor: 'rgba(0, 118, 255, 0.9)',
         color: 'rgb(255, 255, 255)',
-        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 3px 12px 0px',
+        boxShadow: '0 6px 20px rgba(0, 118, 255, 0.23)',
         borderRadius: '4px',
         border: '1px solid transparent',
         padding: '6px 14px',
