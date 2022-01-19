@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
-import { Button, Input } from '@material-ui/core';
+import { Button, Input, Container } from '@material-ui/core';
 import { useFormik } from 'formik';
+import { useStyles } from './style.js'
 
 
 export const Home = () => {
+
     const link = useNavigate()
     const formik = useFormik({
         initialValues: {
@@ -15,19 +17,22 @@ export const Home = () => {
             link('/amount')
         },
     });
+    const classes = useStyles();
+
     return (
-        <div className="home">
-            <form onSubmit={formik.handleSubmit}>
-                <label htmlFor="qtd">Selecione quantas perguntas você deseja responder</label>
+        <Container maxWidth="md">
+            <form className={classes.form} onSubmit={formik.handleSubmit}>
+                <label className={classes.label} htmlFor="qtd">Quantas perguntas você quer responder?</label>
                 <Input
+                    className={classes.input}
                     id="qtd"
                     name="qtd"
                     type="number"
                     onChange={formik.handleChange}
                     value={formik.values.qtd}
                 />
-                <Button type="submit" variant="contained">Proximo</Button>
+                <Button className={classes.btnPrimary} type="submit" variant="contained">Proximo</Button>
             </form>
-        </div>
+        </Container>
     );
 }

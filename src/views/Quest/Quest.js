@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuestions } from '../context/Questions';
-import { getAnswers } from '../utils/answers';
+import { useQuestions } from '../../context/Questions';
+import { getAnswers } from '../../utils/answers';
 import { Button } from '@material-ui/core';
 export const Quest = () => {
 

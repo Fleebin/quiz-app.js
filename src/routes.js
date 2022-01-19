@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes as Router, Route } from 'react-router';
 
-import { Home } from './views/Home';
-import { Amount } from './views/Amount';
-import { Quest } from './views/Quest';
-import { Result } from './views/Result';
+import { Home } from './views/Home/Home';
+import { Amount } from './views/Amount/Amount';
+import { Quest } from './views/Quest/Quest';
+import { Result } from './views/Result/Result';
 
 export const Routes = () => {
     return (
