@@ -19,7 +19,7 @@ export const Amount = () => {
                 variant="contained"
                 onClick={() => {
                     api
-                        .get(`?amount=${localStorage.getItem('qtd')}`)
+                        .get(`?amount=${localStorage.getItem('qtdQuests')}`)
                         .then((response) => {
                             setQuest(response.data.results);
                             return link('/quest');
