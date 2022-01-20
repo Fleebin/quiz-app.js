@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuestions } from '../../context/Questions';
 import { getAnswers } from '../../utils/answers';
-import { Button, Container } from '@material-ui/core';
+import { Button, Container, Box } from '@material-ui/core';
 import { useStyles } from './style';
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
+import HighlightOffIcon from '@mui/icons-material/HighlightOffOutlined';
 
 export const Quest = () => {
 
@@ -107,12 +109,17 @@ export const Quest = () => {
                                     {submittedAnswer &&
                                         quest[currentQuest].correct_answer ===
                                         item && (
-                                            <p>ALOU</p>
+                                            <Box color={'success.main'}>
+                                                <CheckCircleOutlineOutlinedIcon
+                                                    fontSize="medium"
+                                                    color="success.main"
+                                                />
+                                            </Box>
                                         )}
                                     {submittedAnswer &&
                                         quest[currentQuest].correct_answer !==
                                         item && (
-                                            <p />
+                                            <HighlightOffIcon fontSize="medium" color="error" />
                                         )}
                                 </div>
                             </div>
