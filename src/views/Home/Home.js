@@ -20,19 +20,21 @@ export const Home = () => {
     const classes = useStyles();
 
     return (
-        <Container maxWidth="md">
-            <form className={classes.form} onSubmit={formik.handleSubmit}>
-                <label className={classes.label} htmlFor="qtd">Quantas perguntas você quer responder?</label>
-                <Input
-                    className={classes.input}
-                    id="qtd"
-                    name="qtd"
-                    type="number"
-                    onChange={formik.handleChange}
-                    value={formik.values.qtd}
-                />
-                <Button className={classes.btnPrimary} type="submit" variant="contained">Proximo</Button>
-            </form>
-        </Container>
+        <>
+            <Container maxWidth="md">
+                <form className={classes.form} onSubmit={formik.handleSubmit}>
+                    <label className={classes.label} htmlFor="qtd">Quantas perguntas você quer responder?</label>
+                    <Input
+                        className={classes.input}
+                        id="qtd"
+                        name="qtd"
+                        type="number"
+                        onChange={formik.handleChange}
+                        value={formik.values.qtd}
+                    />
+                    <Button className={classes.btnPrimary} type="submit" variant="contained">Próximo</Button>
+                </form>
+            </Container>
+        </>
     );
 }

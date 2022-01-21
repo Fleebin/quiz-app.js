@@ -12,12 +12,13 @@ export const useStyles = makeStyles({
     h1: {
         fontSize: '33px',
         display: 'block',
-        marginBottom: '33px'
+        marginBottom: '33px',
+        color: '#5E6B8C',
     },
     h2: {
         fontSize: '21px',
         display: 'block',
-        marginBottom: '33px'
+        marginBottom: '33px',
     },
     btnPrimary: {
         textTransform: 'none',

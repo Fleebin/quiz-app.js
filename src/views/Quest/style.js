@@ -2,15 +2,17 @@ import { makeStyles } from '@material-ui/styles';
 
 export const useStyles = makeStyles({
     body: {
-        texAlign: 'center',
+        textAlign: 'left',
         marginTop: '150px',
-
     },
-
     h1: {
         fontSize: '28px',
         display: 'block',
         marginBottom: '33px'
+    },
+    flexDisplay: {
+        display: 'flex',
+        alignItems: 'center',
     },
     h2: {
         fontSize: '21px',
@@ -18,7 +20,22 @@ export const useStyles = makeStyles({
         marginBottom: '33px'
     },
     answers: {
-        fontSize: '18px'
+        fontSize: '18px',
+        color: '#5E6B8C',
+        boxShadow: '0px 0px 36.2295px rgba(54, 57, 83, 0.2)',
+        padding: '15px',
+        borderRadius: '7px',
+        marginRight: '5px',
+        '&:hover': {
+            backgroundColor: 'grey',
+            color: 'white',
+            cursor: 'pointer'
+        },
+        '&:focus': {
+            backgroundColor: 'grey',
+            color: 'white',
+            cursor: 'pointer'
+        },
     },
     btnPrimary: {
         textTransform: 'none',

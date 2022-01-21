@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuestions } from '../../context/Questions';
 import { getAnswers } from '../../utils/answers';
-import { Button, Container, Box } from '@material-ui/core';
+import { Button, Container, Box, alpha } from '@material-ui/core';
 import { useStyles } from './style';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOffOutlined';
@@ -77,8 +77,8 @@ export const Quest = () => {
     };
 
     return (
-        <Container className={classes.body}>
-            <div>
+        <>
+            <Container className={classes.body}>
                 {/* Perguntas! */}
                 <div>
                     <p className={classes.h1}>
@@ -92,7 +92,7 @@ export const Quest = () => {
                 <div>
                     {answers.map((item, index) => {
                         return (
-                            <div key={index}>
+                            <div className={classes.flexDisplay} key={index}>
                                 <div
                                     onClick={() => {
                                         if (submittedAnswer) {
@@ -135,7 +135,7 @@ export const Quest = () => {
                     }}
                 >
                     Confirmar</Button>
-            </div>
-        </Container>
+            </Container>
+        </>
     );
 };

@@ -8,7 +8,9 @@ export const useStyles = makeStyles({
     label: {
         fontSize: '33px',
         display: 'block',
-        marginBottom: '33px'
+        marginBottom: '33px',
+        color: '#5E6B8C',
+        fontWeight: '600'
     },
     input: {
         borderBottom: '1px solid',
